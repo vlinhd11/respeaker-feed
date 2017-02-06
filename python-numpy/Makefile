@@ -7,7 +7,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=python-numpy
+PKG_NAME:=numpy
 PKG_VERSION:=1.12.0
 PKG_RELEASE:=1
 PKG_SOURCE:=numpy-$(PKG_VERSION).zip
@@ -17,16 +17,16 @@ PKG_MD5SUM:=33e5a84579f31829bbbba084fe0a4300
 include $(INCLUDE_DIR)/package.mk
 -include $(if $(DUMP),,$(STAGING_DIR)/mk/python-package.mk)
 
-define Package/python-numpy
+define Package/numpy
   SUBMENU:=Python
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=python-numpy
+  TITLE:=numpy
   URL:=http://numpy.sf.net
   DEPENDS:=+python
 endef
 
-define Package/python-numpy/description
+define Package/numpy/description
   API to GTK and glade library from python
 endef
 
@@ -36,7 +36,7 @@ define Build/Compile
 	)
 endef
 
-define Package/python-numpy/install
+define Package/numpy/install
 	$(INSTALL_DIR) $(1)$(PYTHON_PKG_DIR)
 	$(CP) \
 		$(PKG_INSTALL_DIR)$(PYTHON_PKG_DIR)/* \
