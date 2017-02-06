@@ -31,7 +31,7 @@ define Package/numpy/description
 endef
 
 define Build/Compile
-	cd $(PKG_BUILD_DIR) ; $(CONFIGURE_VARS) $(MAKE_VARS) python2.5 ./setup.py install --prefix="$(PKG_INSTALL_DIR)/usr"
+	cd $(PKG_BUILD_DIR) ; $(CONFIGURE_VARS) $(MAKE_VARS) python2.7 ./setup.py install --prefix="$(PKG_INSTALL_DIR)/usr"
 endef
 
 define Package/numpy/install
@@ -41,8 +41,8 @@ endef
 
 $(eval $(call BuildPackage,numpy))
 
-define Require/python25-dev
-[ -e /usr/include/python2.5/pyconfig.h ]
+define Require/python27-dev
+[ -e /usr/include/python2.7/pyconfig.h ]
 endef
 
 $(eval $(call Require,python27-dev, \
