@@ -10,7 +10,7 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=python-numpy
 PKG_VERSION:=1.12.0
 PKG_RELEASE:=1
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).zip
+PKG_SOURCE:=numpy-$(PKG_VERSION).zip
 PKG_SOURCE_URL:=https://pypi.python.org/packages/b7/9d/8209e555ea5eb8209855b6c9e60ea80119dab5eff5564330b35aa5dc4b2c/
 PKG_MD5SUM:=33e5a84579f31829bbbba084fe0a4300
 
