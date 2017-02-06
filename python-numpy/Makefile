@@ -7,7 +7,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=numpy
+PKG_NAME:=python-numpy
 PKG_VERSION:=1.12.0
 PKG_RELEASE:=1
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).zip
@@ -17,34 +17,30 @@ PKG_MD5SUM:=33e5a84579f31829bbbba084fe0a4300
 include $(INCLUDE_DIR)/package.mk
 -include $(if $(DUMP),,$(STAGING_DIR)/mk/python-package.mk)
 
-define Package/numpy
+define Package/python-numpy
   SUBMENU:=Python
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=numpy
+  TITLE:=python-numpy
   URL:=http://numpy.sf.net
   DEPENDS:=python-core @TARGET_x86||TARGET_olpc||TARGET_uml @BROKEN
 endef
 
-define Package/numpy/description
+define Package/python-numpy/description
   API to GTK and glade library from python
 endef
 
 define Build/Compile
-	cd $(PKG_BUILD_DIR) ; $(CONFIGURE_VARS) $(MAKE_VARS) python2.7 ./setup.py install --prefix="$(PKG_INSTALL_DIR)/usr"
+	$(call Build/Compile/PyMod,., \
+		install --prefix="/usr" --root="$(PKG_INSTALL_DIR)" \
+	)
 endef
 
-define Package/numpy/install
-	mkdir -p $(1)
-	cp -r $(PKG_INSTALL_DIR)/* $(1)
+define Package/python-numpy/install
+	$(INSTALL_DIR) $(1)$(PYTHON_PKG_DIR)
+	$(CP) \
+		$(PKG_INSTALL_DIR)$(PYTHON_PKG_DIR)/* \
+		$(1)$(PYTHON_PKG_DIR)/
 endef
 
-$(eval $(call BuildPackage,numpy))
-
-define Require/python27-dev
-[ -e /usr/include/python2.7/pyconfig.h ]
-endef
-
-$(eval $(call Require,python27-dev, \
-	Please install Python 2.7 (including development headers and libraries) \
-))
+$(eval $(call BuildPackage,python-numpy))
