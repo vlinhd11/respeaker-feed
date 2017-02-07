@@ -18,9 +18,8 @@ include $(INCLUDE_DIR)/package.mk
 -include $(if $(DUMP),,$(STAGING_DIR)/mk/python-package.mk)
 
 define Package/numpy
-  SUBMENU:=Python
-  SECTION:=lang
-  CATEGORY:=Languages
+  SECTION:=respeaker
+  CATEGORY:=ReSpeaker
   TITLE:=numpy
   URL:=http://numpy.sf.net
   DEPENDS:=+python
@@ -43,4 +42,4 @@ define Package/numpy/install
 		$(1)$(PYTHON_PKG_DIR)/
 endef
 
-$(eval $(call BuildPackage,python-numpy))
+$(eval $(call BuildPackage,numpy))
